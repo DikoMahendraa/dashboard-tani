@@ -1,5 +1,4 @@
-import moment from "moment";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TitleCard from "../../components/Cards/TitleCard";
 import { RECENT_TRANSACTIONS } from "../../utils/dummyData";
 import FunnelIcon from "@heroicons/react/24/outline/FunnelIcon";
@@ -16,19 +15,19 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
     setFilterParam(params);
   };
 
-  const removeAppliedFilter = () => {
+  const removeAppliedFilter = useCallback(() => {
     removeFilter();
     setFilterParam("");
     setSearchText("");
-  };
+  });
 
   useEffect(() => {
-    if (searchText == "") {
+    if (searchText === "") {
       removeAppliedFilter();
     } else {
       applySearch(searchText);
     }
-  }, [searchText]);
+  }, [applySearch, removeAppliedFilter, searchText]);
 
   return (
     <div className="inline-block float-right">
