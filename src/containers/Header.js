@@ -48,7 +48,6 @@ function Header() {
   }
 
   return (
-    // navbar fixed  flex-none justify-between bg-base-300  z-10 shadow-md
     <div className="navbar sticky top-0 bg-base-100  z-10 shadow-md ">
       {/* Menu toogle for mobile view or small screen */}
       <div className="flex-1">
@@ -62,18 +61,6 @@ function Header() {
       </div>
 
       <div className="flex-none ">
-        {/* Multiple theme selection, uncomment this if you want to enable multiple themes selection, 
-                also includes corporate and retro themes in tailwind.config file */}
-
-        {/* <select className="select select-sm mr-4" data-choose-theme>
-                    <option disabled selected>Theme</option>
-                    <option value="light">Default</option>
-                    <option value="dark">Dark</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="retro">Retro</option>
-                </select> */}
-
-        {/* Light and dark theme selection toogle **/}
         <label className="swap ">
           <input type="checkbox" />
           <SunIcon
@@ -109,21 +96,21 @@ function Header() {
           </div>
         </button>
 
-        {/* Profile icon, opening menu on click */}
         <div className="dropdown dropdown-end ml-4">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="profile" />
-            </div>
-          </label>
+          <div
+            tabIndex={0}
+            className="w-12 cursor-pointer avatar rounded-full bg-green-400 flex items-center justify-center"
+          >
+            <p className="text-white text-2xl ">DC</p>
+          </div>
+
           <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li className="justify-between">
               <Link to={"/app/settings-profile"}>
-                Profile Settings
-                <span className="badge">New</span>
+                Profile Settings <span className="badge">New</span>
               </Link>
             </li>
             <li className="">

@@ -7,7 +7,7 @@ function InternalPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageTitle({ title: "Leads" }));
+    dispatch(setPageTitle({ title: "Daftar Produk / Barang" }));
   }, [dispatch]);
 
   return <Leads />;

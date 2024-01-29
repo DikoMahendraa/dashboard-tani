@@ -4,6 +4,7 @@ import { RECENT_TRANSACTIONS } from "../../utils/dummyData";
 import FunnelIcon from "@heroicons/react/24/outline/FunnelIcon";
 import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import SearchBar from "../../components/Input/SearchBar";
+import moment from "moment";
 
 const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
   const [filterParam, setFilterParam] = useState("");
@@ -98,7 +99,7 @@ function Transactions() {
 
   return (
     <TitleCard
-      title="Recent Transactions"
+      title="Daftar Transaksi"
       topMargin="mt-2"
       TopSideButtons={
         <TopSideButtons
@@ -117,6 +118,8 @@ function Transactions() {
               <th>Jumlah</th>
               <th>Satuan</th>
               <th>Jenis Barang</th>
+              <th>Status</th>
+              <th>Tanggal pembelian</th>
             </tr>
           </thead>
           <tbody>
@@ -128,12 +131,24 @@ function Transactions() {
                   <td>{`1${k}`}</td>
                   <td>{`kg`}</td>
                   <td>{`Cair`}</td>
-                  <td>{`Cair`}</td>
+                  <td>
+                    <div className="badge badge-success text-white badge-outline">
+                      lunas
+                    </div>
+                  </td>
+                  <td>{moment(new Date()).format("DD MMM, yyyy")}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        <div className="join mt-4">
+          <button className="join-item btn btn-sm">1</button>
+          <button className="join-item btn-sm btn">2</button>
+          <button className="join-item btn btn-sm btn-disabled">...</button>
+          <button className="join-item btn-sm btn">99</button>
+          <button className="join-item btn-sm btn">100</button>
+        </div>
       </div>
     </TitleCard>
   );
