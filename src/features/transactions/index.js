@@ -19,7 +19,7 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
     removeFilter();
     setFilterParam("");
     setSearchText("");
-  });
+  }, [removeFilter]);
 
   useEffect(() => {
     if (searchText === "") {
@@ -80,7 +80,7 @@ function Transactions() {
 
   const applyFilter = (params) => {
     let filteredTransactions = RECENT_TRANSACTIONS.filter((t) => {
-      return t.location == params;
+      return t.location === params;
     });
     setTrans(filteredTransactions);
   };
@@ -94,14 +94,6 @@ function Transactions() {
       );
     });
     setTrans(filteredTransactions);
-  };
-
-  const getPaymentStatus = (status) => {
-    if (status === "Paid")
-      return <div className="badge badge-success">{status}</div>;
-    if (status === "Pending")
-      return <div className="badge badge-primary">{status}</div>;
-    else return <div className="badge badge-ghost">{status}</div>;
   };
 
   return (
@@ -120,22 +112,23 @@ function Transactions() {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email Id</th>
-              <th>Location</th>
-              <th>Amount</th>
-              <th>Transaction Date</th>
+              <th>Nama</th>
+              <th>Kode</th>
+              <th>Jumlah</th>
+              <th>Satuan</th>
+              <th>Jenis Barang</th>
             </tr>
           </thead>
           <tbody>
             {trans.map((l, k) => {
               return (
                 <tr key={k}>
-                  <td>{l.name}</td>
-                  <td>{l.date}</td>
-                  <td>{l.email}</td>
-                  <td>${l.location}</td>
-                  <td>{getPaymentStatus(l.amount)}</td>
+                  <td>{`Pupuk`}</td>
+                  <td>{`DB3${k}`}</td>
+                  <td>{`1${k}`}</td>
+                  <td>{`kg`}</td>
+                  <td>{`Cair`}</td>
+                  <td>{`Cair`}</td>
                 </tr>
               );
             })}

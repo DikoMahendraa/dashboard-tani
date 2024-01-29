@@ -1,4 +1,3 @@
-import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
@@ -25,10 +24,10 @@ const TopSideButtons = () => {
   return (
     <div className="inline-block float-right">
       <button
-        className="btn px-6 btn-sm normal-case btn-primary"
+        className="btn px-6 btn-sm normal-case btn-primary text-white"
         onClick={() => openAddNewLeadModal()}
       >
-        Add New
+        + Tambah Produk
       </button>
     </div>
   );
@@ -41,17 +40,6 @@ function Leads() {
   useEffect(() => {
     dispatch(getLeadsContent());
   }, [dispatch]);
-
-  const getDummyStatus = (index) => {
-    if (index % 5 === 0) return <div className="badge">Not Interested</div>;
-    else if (index % 5 === 1)
-      return <div className="badge badge-primary">In Progress</div>;
-    else if (index % 5 === 2)
-      return <div className="badge badge-secondary">Sold</div>;
-    else if (index % 5 === 3)
-      return <div className="badge badge-accent">Need Followup</div>;
-    else return <div className="badge badge-ghost">Open</div>;
-  };
 
   const deleteCurrentLead = (index) => {
     dispatch(
@@ -69,21 +57,21 @@ function Leads() {
 
   return (
     <TitleCard
-      title="Current Leads"
+      title="Daftar Produk"
       topMargin="mt-2"
       TopSideButtons={<TopSideButtons />}
     >
-      {/* Leads List in table format loaded from slice after api call */}
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email Id</th>
-              <th>Created At</th>
-              <th>Status</th>
-              <th>Assigned To</th>
-              <th></th>
+              <th>Nama</th>
+              <th>Kode</th>
+              <th>Jumlah</th>
+              <th>Satuan</th>
+              <th>Jenis Barang</th>
+              <th>Harga</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -92,31 +80,22 @@ function Leads() {
                 <tr key={k}>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img src={l.avatar} alt="Avatar" />
-                        </div>
-                      </div>
                       <div>
-                        <div className="font-bold">{l.first_name}</div>
-                        <div className="text-sm opacity-50">{l.last_name}</div>
+                        <div className="font-bold">{`Pupuk ${k}`}</div>
                       </div>
                     </div>
                   </td>
-                  <td>{l.email}</td>
-                  <td>
-                    {moment(new Date())
-                      .add(-5 * (k + 2), "days")
-                      .format("DD MMM YY")}
-                  </td>
-                  <td>{getDummyStatus(k)}</td>
-                  <td>{l.last_name}</td>
+                  <td>{`D32${k}`}</td>
+                  <td className="font-semibold">{`2${k}`}</td>
+                  <td>Dus</td>
+                  <td>Cair</td>
+                  <td>Rp. {`100.00${k}`}</td>
                   <td>
                     <button
                       className="btn btn-square btn-ghost"
                       onClick={() => deleteCurrentLead(k)}
                     >
-                      <TrashIcon className="w-5" />
+                      <TrashIcon color="red" className="w-5" />
                     </button>
                   </td>
                 </tr>
