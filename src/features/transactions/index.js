@@ -37,7 +37,7 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
         styleClass="mr-4"
         setSearchText={setSearchText}
       />
-      {filterParam != "" && (
+      {filterParam !== "" && (
         <button
           onClick={() => removeAppliedFilter()}
           className="btn btn-xs mr-2 btn-active btn-ghost normal-case"
@@ -58,13 +58,13 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
           {locationFilters.map((l, k) => {
             return (
               <li key={k}>
-                <a onClick={() => showFiltersAndApply(l)}>{l}</a>
+                <button onClick={() => showFiltersAndApply(l)}>{l}</button>
               </li>
             );
           })}
           <div className="divider mt-0 mb-0"></div>
           <li>
-            <a onClick={() => removeAppliedFilter()}>Remove Filter</a>
+            <button onClick={() => removeAppliedFilter()}>Remove Filter</button>
           </li>
         </ul>
       </div>

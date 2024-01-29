@@ -19,12 +19,12 @@ const routes = [
   {
     path: "/app/leads",
     icon: <InboxArrowDownIcon className={iconClasses} />,
-    name: "Products / Barang",
+    name: "Produk / Barang",
   },
   {
     path: "/app/transactions",
     icon: <CurrencyDollarIcon className={iconClasses} />,
-    name: "Riwayat Transaction",
+    name: "Riwayat Transaksi",
   },
   {
     path: "/app/charts",
